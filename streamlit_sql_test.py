@@ -1,7 +1,9 @@
-
 import streamlit as st
 import pandas as pd
 import sqlalchemy
+import pymysql
+
+conn = pymysql.connect(db='nba_api', user = 'root', passwd = '9U7s0GjX%*dH*aQI3Bmf',host = 'localhost')
 engine = sqlalchemy.create_engine('mysql+pymysql://root:9U7s0GjX%*dH*aQI3Bmf@localhost:3306/nba_api')
 
 st.set_page_config(
