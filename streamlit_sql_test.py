@@ -1,30 +1,25 @@
 import streamlit as st
 import pandas as pd
 import sqlalchemy
+import mysql.connector
 
-engine = sqlalchemy.create_engine('mysql+pymysql://root:9U7s0GjX%*dH*aQI3Bmf@localhost:3306/nba_api')
+cnx  = mysql.connector.connect(
+    host = "45.79.146.41",
+    user = 'krakman',
+    passwd = 'H0stAdm1n123!',
+    database = 'nba_api'
+)
 
 st.set_page_config(
     page_title = 'Test',
     layout = 'wide'
-
 )
 
-def pd_to_sql(df,table):
-    df.columns = df.columns.str.strip()
-    df.to_sql(
-        name = table,
-        con = engine,
-        index = False,
-        if_exists = 'replace'
-    )
+cursor = cnx.cursor()
 
-def pd_read_sql(table):
-    df = pd.read_sql(table , engine)
-    return df
-
-df = pd_read_sql('today_preds')
-
-st.header('hello')
+df = pd.read_sql(
+    sql = 'SELECT * FROM adv_stats_archive',
+    con = cnx
+)
 
 st.dataframe(df)
