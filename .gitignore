@@ -131,8 +131,8 @@ dmypy.json
 # .streamlit/secrets.toml
 
 [mysql]
-host = "localhost"
+host = "45.79.146.41"
 port = 3306
 database = "nba_api"
-user = "root"
-password = "9U7s0GjX%*dH*aQI3Bmf"
+user = "krakman"
+password = "H0stAdm1n123!"
